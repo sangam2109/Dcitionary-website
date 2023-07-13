@@ -1,15 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dictionary website</title>
     <link rel="shortcut icon" href="images/dictionary.png" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="header.css">
     <script src="script.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="search.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
 </head>
+
 <body>
-    hello world
-    
+
+    <header class="head-dictionary">
+        <nav class="above-content">
+
+            <img src="images/logo.svg" id="logo-dict">
+
+
+            <div class="mode-btn">
+                <div class="dropdown">
+                    <label for="drop" class="dropdown-label">
+                        <p>Sans Serif</p>
+                        <img src="/images/icon-arrow-down.svg" alt="">
+                    </label>
+                    <input id="drop" class="dropdown-checkbox" type="checkbox">
+                    <div class="dropdown-menu">
+                        <a href="/Sans Serif/keyboard">Sans Serif</a>
+                        <a href="/Serif/keyboard">Serif</a>
+                        <a href="/Mono/keyboard">Mono</a>
+                    </div>
+                </div>
+                <div class="header-line"></div>
+                <label class="switch">
+                    <input type="checkbox" onclick="changeMode()">
+                    <span class="slider"></span>
+                </label>
+                <img src="images/icon-moon.svg" alt="">
+                </label>
+
+            </div>
+        </nav>
+        <div class="search-container">
+            <form onsubmit="event.preventDefault(); fetchDataFromDictionaryAPI('search-input','phonetic');">
+                <input type="text" placeholder="Search" value="keyboard" name="search" id="search-input">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+    </header>
+    <main>
+        <!-- Main Content -->
+        <div id="word">
+            <h1 id="word-display">keyboard</h1>
+
+            <button id="play-btn"><img src="images/icon-play.svg" alt="" id="play"></button>
+
+
+        </div>
+        <p id="phonetic">/ˈkiːbɔːd/</p>
+        <section class="noun-container">
+            <div class="noun-container_data">
+                <h2 class="noun-container_data_noun">noun</h2>
+                <div class="noun-container_data_noun-line"></div>
+            </div>
+            <h4 class="meaning-title">Meaning</h4>
+            <ul class="meaning-list">
+                <li class="meaning-item">(etc.) A set of keys used to operate a typewriter, computer etc.</li>
+                <li class="meaning-item">A component of many instruments including the piano, organ, and harpsichord
+                    consisting of
+                    usually black and white keys that cause different tones to be produced when struck.</li>
+                <li class="meaning-item">A device with keys of a musical keyboard, used to control electronic
+                    sound-producing
+                    devices which may be built into or separate from the keyboard device.</li>
+            </ul>
+
+        </section>
+        <section class="synonyms-section">
+            <h2 class="synonyms-title">Synonyms</h2>
+            <form method="post" action="/?/search">
+                <input type="hidden" name="word" value="electronic keyboard">
+                <button class="synonym-button">electronic keyboard</button>
+            </form>
+        </section>
+
+        <section class="meaning-section">
+            <div class="noun-container_data">
+                <h2 class="noun-container_data_noun">verb</h2>
+                <div class="noun-container_data_noun-line"></div>
+            </div>
+
+            <h4 class="meaning-title">Meaning</h4>
+            <ul class="meaning-list">
+                <li class="meaning-item">To type on a computer keyboard.</li>
+            </ul>
+        </section>
+
+    </main>
+
+    <section class="section-divider"></section>
+
+    <div class="source-section">
+        <h2 class="source-title">Source</h2>
+        <a class="source-link"
+            href="https://en.wiktionary.org/wiki/keyboard">https://en.wiktionary.org/wiki/keyboard</a>
+    </div>
+
 </body>
+
 </html>

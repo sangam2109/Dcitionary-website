@@ -1,0 +1,122 @@
+*{
+  font-family: "Poppins", sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  padding: 3rem;
+  padding-inline: 20%;
+  background: white;
+}
+.above-content {
+  width: 100%;
+  height: 2rem;
+  display: flex;
+  justify-content: space-between;
+ 
+}
+#logo-dict {
+  float: left;
+  width: 2rem;
+  height: auto;
+}
+.mode-btn{
+  gap:.5rem;
+  display: flex;
+  align-self: center;
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-label {
+  cursor: pointer;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.dropdown-checkbox {
+  display: none;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 1rem);
+  right: 0;
+  display: none;
+  background-color: #ffffff;
+  border-radius: 1rem;
+  width: max-content;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-checkbox:checked ~ .dropdown-menu {
+  display:-webkit-inline-box;
+}
+
+.dropdown-menu a {
+  display: block;
+  width: fit-content;
+  color: black;
+  text-decoration: none;
+  padding: 0.2rem .5rem;
+}
+
+.dropdown-menu a:hover {
+  color: #b892ff;
+}
+
+.header-line{
+  width: 1px;
+  height: 100%;
+  --tw-bg-opacity: 1;
+  background-color: rgb(233 233 233 / var(--tw-bg-opacity));
+}
+
+ .switch {
+  position: relative;
+  display: flex;
+  width: 40px;
+  gap: 1rem;
+  height: 20px;
+}
+.switch input {
+  display: none;
+}
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #ccc;
+  border-radius: 34px;
+  transition: 0.4s;
+}
+.slider:before {
+  content: "";
+  position: absolute;
+  height: 15px;
+  width: 15px;
+  left: 4px;
+  bottom: 2.5px;
+  background: #fff;
+  border-radius: 50%;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background: #b892ff;
+}
+input:checked + .slider:before {
+  transform: translateX(17px);
+} 
+
+.dark-mode {
+  background-color: black;
+  color: white;
+}
