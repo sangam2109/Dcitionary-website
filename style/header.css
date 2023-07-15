@@ -43,9 +43,13 @@ body {
 .switch input {
   display: none;
 }
+
 .dropdown button {
   background: none;
   border: none;
+}
+.dropdown button ul{
+   box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 30px;
 }
 #dropdown-name {
   color: black;
@@ -100,10 +104,14 @@ input:checked + .slider:before {
 .dark-mode .source-link,
 .dark-mode .synonyms-title,
 .dark-mode #dropdown-name,
-.dark-mode .dropdown-toggle::after {
+.dark-mode .dropdown-toggle::after,
+.dark-mode .dropdown-item {
   color: white;
 }
-
+.dark-mode .dropdown-menu{
+      box-shadow: rgb(164, 69, 237) 0px 5px 30px;
+      background-color: black;
+}
 .sans-serif body,
 .sans-serif span,
 .sans-serif ul,
@@ -188,6 +196,8 @@ input[type="text"] {
   cursor: pointer;
   background: none;
   border: none;
+  position: relative;
+  right: 0.8rem;
 }
 
 #play {
@@ -248,7 +258,7 @@ input[type="text"] {
 }
 .synonyms-section {
   display: flex;
-  gap: 3rem;
+  gap: .75rem;
   margin-top: 2rem;
   flex-wrap: wrap;
 }

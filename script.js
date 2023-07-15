@@ -31,10 +31,11 @@ const fetchDataFromDictionaryAPI = async () => {
         const data = response.data[0];
         console.log(data);
         wordSpeech = data.word;
+        const searchName = document.querySelector("#search-input").value;
         const content = `
         <!-- Main Content -->
         <div id="word">
-            <h1 id="word-display">${data.word}</h1>
+            <h1 id="word-display">${data.word ?data.word: searchName }</h1>
             <button id="play-btn" onclick="playSpeech()"><img src="images/icon-play.svg" alt="" id="play"></button>
         </div>
         <p id="phonetic">${data.phonetic ? data.phonetic : ''}</p>
@@ -87,8 +88,7 @@ const fetchDataFromDictionaryAPI = async () => {
 function changeMode() {
     var element = document.body;
     element.classList.toggle("dark-mode");
-    // document.getElementById("search-input").style.color = "white";
-    // document.getElementById("search-input").style.backgroundColor = "#252121";
+   
 }
 
 function LanguageSansSerif() {
