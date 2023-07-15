@@ -2,7 +2,7 @@ function playSpeech() {
 
     console.log("hello")
 
-    const searchText = document.querySelector("#search-input").value;
+    const searchText = document.querySelector("#word-display").textContent;
     console.log(searchText);
     const currentSpeech = new SpeechSynthesisUtterance(searchText);
     window.speechSynthesis.speak(currentSpeech);
@@ -11,14 +11,15 @@ function playSpeech() {
 
 const generateLi = (array, i) => {
     setTimeout(() => {
-        const meaning_list = document.querySelectorAll('.meaning-list')[i];
-        meaning_list.innerHTML = `<li class="meaning-item"> ${array[0].definition}</li>`
-        for (let index = 1; index < array.length; index++) {
-            meaning_list.innerHTML += `<li class="meaning-item"> ${array[index].definition}</li>`
-        }
-    }, 10);
-
+    const meaning_list = document.querySelectorAll('.meaning-list')[i];
+    meaning_list.innerHTML = `<li class="meaning-item"> ${array[0].definition}</li>`
+    for (let index = 1; index < array.length; index++) {
+        meaning_list.innerHTML += `<li class="meaning-item"> ${array[index].definition}</li>`
+    }
+},1)
 }
+
+
 
 const fetchDataFromDictionaryAPI = async () => {
 
@@ -29,8 +30,7 @@ const fetchDataFromDictionaryAPI = async () => {
             return;
         })
         const data = response.data[0];
-        console.log(data);
-        wordSpeech = data.word;
+        console.log(data)
         const searchName = document.querySelector("#search-input").value;
         const content = `
         <!-- Main Content -->
@@ -38,7 +38,7 @@ const fetchDataFromDictionaryAPI = async () => {
             <h1 id="word-display">${data.word ? data.word : searchName}</h1>
             <button id="play-btn" onclick="playSpeech()"><img src="images/icon-play.svg" alt="" id="play"></button>
         </div>
-        <p id="phonetic">${data.phonetic ? data.phonetic : ''}</p>
+        <p id="phonetic">${data.phonetics && data.phonetics.length > 1 && data.phonetics[1].text ? data.phonetics[1].text : data.phonetics && data.phonetics.length > 0 ? data.phonetics[0].text : data.phonetic ? data.phonetic : ''}</p>
         <section class="noun-container">
             <div class="noun-container_data">
                 <h2 class="noun-container_data_noun">noun</h2>
@@ -50,7 +50,7 @@ const fetchDataFromDictionaryAPI = async () => {
             </ul>
         </section>
          <section class="synonyms-section">
-            <h2 class="synonyms-title">${data.meanings[0].synonyms ? 'Synonyms' : ''}</h2>
+            <h2 class="synonyms-title">${data.meanings[0].synonyms.length != 0 ? 'Synonyms' : ''}</h2>
             <form method="post" action="/?/search">
                 <input type="hidden" name="word" value="electronic keyboard">
                 <button class="synonym-button">${data.meanings[0].synonyms}</button>
@@ -67,7 +67,7 @@ const fetchDataFromDictionaryAPI = async () => {
             </ul>
         </section>
  <section class="synonyms-section">
-            <h2 class="synonyms-title">${data.meanings[1].synonyms ? 'Synonyms' : ''}</h2>
+            <h2 class="synonyms-title">${data.meanings[1].synonyms.length != 0 ? 'Synonyms' : ''}</h2>
             <form method="post" action="/?/search">
                 <input type="hidden" name="word" value="electronic keyboard">
                 <button class="synonym-button">${data.meanings[1].synonyms}</button>
@@ -77,9 +77,12 @@ const fetchDataFromDictionaryAPI = async () => {
     <div class="source-section">
         <h2 class="source-title">Source</h2>
         <a class="source-link"
-            href=${data.source || data.sourceUrls}>${data.source || data.sourceUrls}</a>
+            href=${data.source ? data.source : (data.sourceUrls ? data.sourceUrls : "https://en.m.wiktionary.org/wiki/" + searchName)}> ${data.source || data.sourceUrls ? (data.source || data.sourceUrls) : "https://en.m.wiktionary.org/wiki/" + searchName}</a>
+
     </div>`
         document.getElementById('dictionary').innerHTML = content;
+        const get=document.getElementById("word-display").innerHTML
+        console.log(get);
     } catch (error) {
         console.error('Error fetching data from the API:', error.message);
     }
