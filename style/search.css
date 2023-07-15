@@ -1,4 +1,4 @@
-
+/* 
 .search-container {
   width: 100%;
   margin: 50px auto;
@@ -12,7 +12,7 @@ input[type="text"] {
   border: none;
   border-radius: 15px;
   background-color: hsl(0, 0%, 96%);
-  /* border: 2px solid #4b00ff; */
+  border: 2px solid #4b00ff;
 }
 .search-container form {
   position: relative;
@@ -49,4 +49,4 @@ input[type="text"] {
   .source-title{
     margin-right: .3rem;
   }
-}
+} */
