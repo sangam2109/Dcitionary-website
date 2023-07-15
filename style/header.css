@@ -324,6 +324,24 @@ a {
   color: hsl(0, 4%, 26%);
 }
 
+/* when no word found */
+#no-definitions-section {
+  background-color: #f8f8f8;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#no-definitions-section h2 {
+  color: #333;
+}
+
+#no-definitions-section p {
+  color: #666;
+}
+
+
 /* media queries */
 @media screen and (min-width: 400px) and (max-width: 600px) {
   body {

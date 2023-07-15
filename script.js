@@ -1,11 +1,11 @@
 function playSpeech() {
-  
-        console.log("hello")
-       
+
+    console.log("hello")
+
     const searchText = document.querySelector("#search-input").value;
-            console.log(searchText);
-            const currentSpeech = new SpeechSynthesisUtterance(searchText);
-            window.speechSynthesis.speak(currentSpeech);
+    console.log(searchText);
+    const currentSpeech = new SpeechSynthesisUtterance(searchText);
+    window.speechSynthesis.speak(currentSpeech);
 
 }
 
@@ -21,11 +21,11 @@ const generateLi = (array, i) => {
 }
 
 const fetchDataFromDictionaryAPI = async () => {
-    
+
     try {
         const wordInput = document.getElementById("search-input");
         const response = await axios.get(`https://api.dictionaryapi.dev/api/v2/entries/en/${wordInput.value}`).catch((error) => {
-            document.getElementById('dictionary').innerHTML = `<section class="flex flex-col gap-6 items-center w-full mt-[132px]">  <h2 class="font-bold text-heading-s" style="text-align:center">😛 No Definitions Found</h2> </section>`;
+            document.getElementById('dictionary').innerHTML = `<section id="no-definitions-section" class="flex flex-col items-center justify-center mt-8"><h2 class="font-bold text-3xl mb-4">No Definitions Found</h2><p class="text-lg">Oops! We couldn't find any definitions for the searched word 😐 . </p></section>`;
             return;
         })
         const data = response.data[0];
@@ -35,7 +35,7 @@ const fetchDataFromDictionaryAPI = async () => {
         const content = `
         <!-- Main Content -->
         <div id="word">
-            <h1 id="word-display">${data.word ?data.word: searchName }</h1>
+            <h1 id="word-display">${data.word ? data.word : searchName}</h1>
             <button id="play-btn" onclick="playSpeech()"><img src="images/icon-play.svg" alt="" id="play"></button>
         </div>
         <p id="phonetic">${data.phonetic ? data.phonetic : ''}</p>
@@ -88,7 +88,7 @@ const fetchDataFromDictionaryAPI = async () => {
 function changeMode() {
     var element = document.body;
     element.classList.toggle("dark-mode");
-   
+
 }
 
 function LanguageSansSerif() {
