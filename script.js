@@ -1,13 +1,12 @@
+
 function playSpeech() {
-
     console.log("hello")
-
     const searchText = document.querySelector("#word-display").textContent;
     console.log(searchText);
     const currentSpeech = new SpeechSynthesisUtterance(searchText);
     window.speechSynthesis.speak(currentSpeech);
-
 }
+
 const fetchDataFromDictionaryAPI = async () => {
     try {
         const wordInput = document.getElementById("search-input");
@@ -74,11 +73,31 @@ const generateSynonymsButtons = (synonyms) => {
     }).join(' ; ');
 };
 
-function changeMode() {
-    var element = document.body;
-    element.classList.toggle("dark-mode");
-
+// Set the initial value in localStorage only if it doesn't exist
+if (localStorage.getItem("buttonclicked") === null) {
+  localStorage.setItem("buttonclicked", JSON.stringify(false));
 }
+
+function changeMode() {
+  var element = document.body;
+  element.classList.toggle("dark-mode");
+
+  // Store the current mode in localStorage
+  var button = document.getElementById("mode-setter");
+  var mode = button.checked;
+  localStorage.setItem("buttonclicked", JSON.stringify(mode));
+}
+
+window.onload = function () {
+  var buttonClicked = JSON.parse(localStorage.getItem("buttonclicked"));
+  if (buttonClicked) {
+    var button = document.getElementById("mode-setter");
+    button.checked = true;
+    changeMode();
+  }
+};
+
+
 
 function LanguageSansSerif() {
     word = document.getElementById("dropdown-name");
@@ -105,5 +124,3 @@ function LanguageMono() {
     document.body.classList.add("mono");
     console.log("Mono option selected");
 }
-
-
