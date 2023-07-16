@@ -1,8 +1,6 @@
 
 function playSpeech() {
-    console.log("hello")
     const searchText = document.querySelector("#word-display").textContent;
-    console.log(searchText);
     const currentSpeech = new SpeechSynthesisUtterance(searchText);
     window.speechSynthesis.speak(currentSpeech);
 }
@@ -16,7 +14,6 @@ const fetchDataFromDictionaryAPI = async () => {
         });
         const data = response.data[0];
         const searchName = document.querySelector("#search-input").value;
-        console.log(data)
         const content = `
       <!-- Main Content -->
       <div id="word">
@@ -105,7 +102,6 @@ function LanguageSansSerif() {
     document.body.classList.remove("mono");
     document.body.classList.remove("serif");
     document.body.classList.add("sans-serif");
-    console.log("Sans Serif option selected");
 }
 
 function LanguageSerif() {
@@ -114,7 +110,6 @@ function LanguageSerif() {
     document.body.classList.remove("mono");
     document.body.classList.remove("sans-serif");
     document.body.classList.add("serif");
-    console.log("Serif option selected");
 }
 
 function LanguageMono() {
@@ -122,5 +117,4 @@ function LanguageMono() {
     document.body.classList.remove("serif");
     document.body.classList.remove("sans-serif");
     document.body.classList.add("mono");
-    console.log("Mono option selected");
 }
