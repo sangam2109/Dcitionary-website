@@ -70,6 +70,7 @@ const generateSynonymsButtons = (synonyms) => {
     }).join(' ; ');
 };
 
+
 // Set the initial value in localStorage only if it doesn't exist
 if (localStorage.getItem("buttonclicked") === null) {
   localStorage.setItem("buttonclicked", JSON.stringify(false));
@@ -78,9 +79,17 @@ if (localStorage.getItem("buttonclicked") === null) {
 function changeMode() {
   var element = document.body;
   element.classList.toggle("dark-mode");
-
+  const sun=document.getElementById("sun");
+  const moon=document.getElementById('moon');
+  if (element.classList.contains("dark-mode")) {
+    sun.style.display = "none";
+    moon.style.display = "block";
+  } else {
+    moon.style.display = "none";
+    sun.style.display = "block";
+  }
   // Store the current mode in localStorage
-  var button = document.getElementById("mode-setter");
+  var button = document.getElementById("darkmode-toggle");
   var mode = button.checked;
   localStorage.setItem("buttonclicked", JSON.stringify(mode));
 }
@@ -88,7 +97,7 @@ function changeMode() {
 window.onload = function () {
   var buttonClicked = JSON.parse(localStorage.getItem("buttonclicked"));
   if (buttonClicked) {
-    var button = document.getElementById("mode-setter");
+    var button = document.getElementById("darkmode-toggle");
     button.checked = true;
     changeMode();
   }

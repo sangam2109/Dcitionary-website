@@ -39,12 +39,19 @@
                 </div>
             
                 <div class="header-line"></div>
-                <label class="switch">
+                <!-- <label class="switch">
                     <input type="checkbox" id="mode-setter" onclick="changeMode()">
                     <span class="slider"></span>
                 </label>
                 <img src="images/icon-moon.svg" alt="">
-                </label>
+                </label> -->
+                
+                <label for="darkmode-toggle" id="mode-label">
+                    <img src="images/icon-moon.svg" class="moon" id="moon" alt="">
+                    <img src="images/sunny.png" class="sun" id="sun" alt="">
+                  
+                    <input type="checkbox" id="darkmode-toggle" onclick="changeMode()">
+                      </label>
 
             </div>
         </nav>

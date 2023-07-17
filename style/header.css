@@ -21,8 +21,8 @@ body {
   height: auto;
 }
 .mode-btn {
-  gap: 0.5rem !important;
   display: flex;
+  gap: 0.5rem;
   align-items: center;
 }
 
@@ -30,6 +30,7 @@ body {
   width: 1px;
   height: 100%;
   --tw-bg-opacity: 1;
+  margin-right: .5rem;
   background-color: rgb(233 233 233 / var(--tw-bg-opacity));
 }
 
@@ -60,39 +61,43 @@ body {
 .btn:hover {
   background-color: white;
 }
-.slider {
-  position: absolute;
+label {
+  width: 35px;
+  right: .5rem;
+  height: 35px;
+  position: relative;
+  background: #FFD700;
+  border-radius: 200px;
+  box-shadow: inset 0px 5px 15px rgba(0,0,0,0.4), inset 0px -5px 15px rgba(255,255,255,0.4);
   cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: #ccc;
-  border-radius: 34px;
-  transition: 0.4s;
 }
-.slider:before {
-  content: "";
-  position: absolute;
-  height: 15px;
-  width: 15px;
-  left: 4px;
-  bottom: 2.5px;
-  background: #fff;
-  border-radius: 50%;
-  transition: 0.4s;
+label::after{
+  background-color:#252121;
 }
 
-input:checked + .slider {
-  background: #b892ff;
+#darkmode-toggle {
+  width: 0;
+  height: 0;
+  display: none;
 }
-input:checked + .slider:before {
-  transform: translateX(17px);
+.sun,.moon{
+    width: 25px;
+    position: absolute;
+    right: 0.35rem;
+    z-index: 1;
+    top: 0.34rem;
 }
+.moon{
+  display:none
+}
+
 
 .dark-mode {
   background-color: black;
   color: white;
+}
+.dark-mode label{
+  background-color: #252121;
 }
 .dark-mode #search-input {
   background-color: #252121;
