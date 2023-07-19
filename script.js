@@ -48,10 +48,8 @@ const generateSections = (meanings) => {
         </ul>
         <section class="synonyms-section">
           <h2 class="synonyms-title">${meaning.synonyms.length > 0 ? 'Synonyms' : ''}</h2>
-          <form method="post" action="/?/search">
-            <input type="hidden" name="word" value="electronic keyboard">
-            ${generateSynonymsButtons(meaning.synonyms)}
-          </form>
+           ${generateSynonymsButtons(meaning.synonyms)}
+       
         </section>
       </section>`;
     }).join('');
@@ -66,8 +64,8 @@ const generateLi = (definitions) => {
 
 const generateSynonymsButtons = (synonyms) => {
     return synonyms.map(synonym => {
-        return `<button class="synonym-button">${synonym}</button>`;
-    }).join(' ; ');
+      return `<button class="synonym-button" onclick="window.location.href='https://en.m.wikipedia.org/wiki/' + '${synonym}'">${synonym}</button>`;
+    }).join('');
 };
 
 
@@ -103,8 +101,14 @@ window.onload = function () {
   }
 };
 
+//synonym link
 
-
+// function SynonymLink(){
+//   console.log(synonym)
+//   const location = "https://en.m.wiktionary.org/wiki/{synonym}"  
+//   console.log(location)
+//   // window.location = "https://en.m.wiktionary.org/wiki/{synonym}"  
+// }
 function LanguageSansSerif() {
     word = document.getElementById("dropdown-name");
     word.innerHTML = 'Sans Serif';

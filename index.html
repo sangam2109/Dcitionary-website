@@ -37,21 +37,15 @@
                         <li><button class="dropdown-item" type="button" onclick="LanguageMono()">Mono</button></li>
                     </ul>
                 </div>
-            
+
                 <div class="header-line"></div>
-                <!-- <label class="switch">
-                    <input type="checkbox" id="mode-setter" onclick="changeMode()">
-                    <span class="slider"></span>
-                </label>
-                <img src="images/icon-moon.svg" alt="">
-                </label> -->
-                
+
                 <label for="darkmode-toggle" id="mode-label">
                     <img src="images/icon-moon.svg" class="moon" id="moon" alt="">
                     <img src="images/sunny.png" class="sun" id="sun" alt="">
-                  
+
                     <input type="checkbox" id="darkmode-toggle" onclick="changeMode()">
-                      </label>
+                </label>
 
             </div>
         </nav>
@@ -90,10 +84,7 @@
         </section>
         <section class="synonyms-section">
             <h2 class="synonyms-title">Synonyms</h2>
-            <form method="post" action="/?/search">
-                <input type="hidden" name="word" value="electronic keyboard">
-                <button class="synonym-button">electronic keyboard</button>
-            </form>
+                <button class="synonym-button" onclick="window.location.href='https://en.wikipedia.org/wiki/Special:Search?search=electronic+keyboard' ">electronic keyboard</button>
         </section>
 
         <section class="meaning-section">
@@ -122,4 +113,5 @@
         crossorigin="anonymous"></script>
 
 </body>
+
 </html>
